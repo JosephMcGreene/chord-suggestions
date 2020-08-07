@@ -10,25 +10,33 @@
     <h1>Chord Suggestions</h1>
     <h2>Let's build a progression!</h2>
     <h3 for="chordInput">What is your starting triad? <span>(The program only works with triads, sue me.)</span></h3>
+
     <form action="index.html" method="post">
+
       <input id="chordInput" type="text" placeholder="Letter Name">
+      <label for="accidentalSelect">Accidental</label>
       <select id="accidentalSelect" name="accidental-select">
-        <option value="sharp">&#9839;</option>
-        <option value="natural">&#9838;</option>
-        <option value="flat">&#9837;</option>
+        <option value="&#9839;">&#9839;</option> <!--sharp-->
+        <option value="&#9838;">&#9838;</option> <!--natural-->
+        <option value="&#9837;">&#9837;</option> <!--flat-->
       </select>
-      <label for="typeSelect">Type</label>
-      <select id="typeSelect" name="type-select">
+
+      <label for="qualitySelect">Quality</label>
+      <select id="qualitySelect" name="type-select">
         <option value="major">Major</option>
         <option value="minor">minor</option>
         <option value="diminished">diminished</option>
         <option value="augmented">augmented</option>
       </select>
+
       <button id="chordInputButton" type="button">Suggest Chords</button>
+
     </form>
+
     <ul id="chordSuggestionList" class="suggestion-list">
 
     </ul>
+
   </body>
   <script type="text/javascript" src="js/keys.js"></script>
   <script type="text/javascript" src="js/scripts.js"></script>
