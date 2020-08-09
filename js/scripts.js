@@ -11,26 +11,33 @@ class Key {
 };
 
 const noteNamesHTML = [
-  'C&#9837;', 'C&#9838;', 'C&#9839;',
-  'D&#9837;', 'D&#9838;', 'D&#9839;',
-  'E&#9837;', 'E&#9838;', 'E&#9839;',
-  'F&#9837;', 'F&#9838;', 'F&#9839;',
-  'G&#9837;', 'G&#9838;', 'G&#9839;',
-  'A&#9837;', 'A&#9838;', 'A&#9837;',
-  'B&#9837;', 'B&#9838;', 'B&#9839;'
+  'C&#9838;', 'C&#9839;',
+  'D&#9837;', 'D&#9838;',
+  'E&#9837;', 'E&#9838;',
+  'F&#9838;', 'F&#9839;',
+  'G&#9837;', 'G&#9838;',
+  'A&#9837;', 'A&#9838;',
+  'B&#9837;', 'B&#9838;',
 ];
-
 const noteNames = [
-  'Cflat', 'Cnatural', 'Csharp',
-  'Dflat', 'Dnatural', 'Dsharp',
-  'Eflat', 'Enatural', 'Esharp',
-  'Fflat', 'Fnatural', 'Fsharp',
-  'Gflat', 'Gnatural', 'Gsharp',
-  'Aflat', 'Anatural', 'Asharp',
-  'Bflat', 'Bnatural', 'Bsharp'
+  'Cnatural', 'Csharp',
+  'Dflat', 'Dnatural',
+  'Eflat', 'Enatural',
+  'Fnatural', 'Fsharp',
+  'Gflat', 'Gnatural',
+  'Aflat', 'Anatural',
+  'Bflat', 'Bnatural'
 ];
 
-// const noteNames = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
+const sharpKeys = [0, 'Gnatural', 'Dnatural', 'Anatural', 'Enatural', 'Bnatural', 'Fsharp', 'Csharp'];
+const flatKeys = [0, 'Fnatural', 'Bflat', 'Eflat', 'Aflat', 'Dflat', 'Gflat'];
+const cMajor = [0, 'C', 'D', 'E', 'F', 'G', 'A', 'B'];
+
+const orderOfSharps = [0, 'F', 'C', 'G', 'D', 'A', 'E', 'B'];
+const orderOfFlats = [0, 'B', 'E', 'A', 'D', 'G', 'C', 'F'];
+
+const accidentals = ['sharp', 'natural', 'flat'];
+const accidentalsHTML = ['&#9839;', '&#9838;', '&#9837;']
 
 const chordInput = document.querySelector('#chordInput');
 const inputButton = document.querySelector('#chordInputButton');
@@ -38,25 +45,50 @@ const accidentalSelect = document.querySelector('#accidentalSelect');
 const qualitySelect = document.querySelector('#qualitySelect');
 let ul = document.querySelector('#chordSuggestionList');
 
-// function establishKey() {
-//   if (chordInput) {
-//     const initialKey = new Key( chordInput.nodeValue.toUpperCase() )
-//   }
-// }
+    /**
+     * Establishes the key used to suggest chords once the user presses the inputButton. Two stages: (1)rearrange noteNames and noteNamesHTML then (2)construct a new Key to use to suggest chords.
+     * @return  [Array]    an array containing the new key.
+     */
 
-inputButton.addEventListener('click', () => {
+function establishKey() {
+  // Stage 1:
   if ( noteNames.includes(chordInput.value.toUpperCase() + accidentalSelect.value) ) {
-    let newTonic = chordInput.value.toUpperCase() + accidentalSelect.value;
-    while ( newTonic !== noteNames[0] ) {
-      let shiftNoteHTML = noteNamesHTML.shift();
-      let shiftNote = noteNames.shift();
+    let tonic = chordInput.value.toUpperCase() + accidentalSelect.value;
+    let key;
 
-      noteNamesHTML.push(shiftNoteHTML);
-      noteNames.push(shiftNote);
-    }
+    if ( sharpKeys.includes(tonic) ) {
+      let numOfSharps = sharpKeys.indexOf(tonic); /** 1 for Gnatural, 2 for Dnatural, etc. */
+      let tonicSharps = orderOfSharps.filter( (i) => orderOfSharps.indexOf(i) <= numOfSharps );
+      
+      
+
+      // key = [];
+    } 
+
+    // else if ( flatKeys.includes(tonic) ) {
+
+    // }
+    // else if ( tonic === 'Cnatural' ) {
+    //   key = cMajor;
+    // }
+
+    // }
   }
-  let quickTest = document.createElement('li');
-  ul.appendChild(quickTest);
-  console.log(noteNames);
-  quickTest.innerHTML = `${noteNamesHTML}`;
-});
+
+  // Stage 2:
+
+  // let keyTonicList = document.createElement('li');
+  // keyTonicList.innerHTML = ``;
+  // keyTonicList.parentNode = ul;
+  // ul.appendChild(keyTonicList);
+
+  // console.log(noteNames);
+  // // console.log(keyTonicList);
+  // return key;
+}
+
+/* 
+============================== Event Listeners ==============================
+*/
+
+inputButton.addEventListener( 'click', () => establishKey() );
