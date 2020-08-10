@@ -57,7 +57,7 @@ function establishKey() {
     } 
     // If the user input is a key with flats:
     else if ( flatKeysMajor.includes(tonic) ) {
-      getKeyAccidentals(flatKeysMinor, orderOfFlats, '&#9837;')
+      getKeyAccidentals(flatKeysMajor, orderOfFlats, '&#9837;');
     }
     else if ( tonic === 'Cnatural' ) {
       key = cMajorAMinor;
@@ -81,7 +81,7 @@ function establishKey() {
     }
   } 
   
-  else {
+  else if (  ) {
     let callingBS = document.createElement('li');
     callingBS.innerHTML = `Umm... That key will make people hate you. Try again.`;
     chordSuggestions.appendChild(callingBS);
