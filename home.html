@@ -1,47 +1,52 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Chord Suggestions</title>
-    <link rel="stylesheet" type="text/css" href="normalize.css">
-    <link rel="stylesheet" type="text/css" href="styles.css">
-  </head>
-  <body>
-    <h1>Chord Suggestions</h1>
-    <h2>Let's build a progression!</h2>
-    <h3 for="chordInput">What is your starting triad? <span>(The program only works with triads, sue me.)</span></h3>
+<head lang="en">
+  <meta charset="utf-8">
+  <title>Chord Suggestions</title>
+  <link rel="stylesheet" type="text/css" href="normalize.css">
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  <h1>Chord Suggestions</h1>
+  <h2>Let's build a progression!</h2>
+  <h3 for="chordInput">What key is our music in?</h3>
 
-    <form action="index.html" method="post">
+  <form action="index.html" method="post">
 
-      <!-- A Select menu for choosing the accidental -->
+    <input id="chordInput" type="text" placeholder="Letter Name">
 
-      <input id="chordInput" type="text" placeholder="Letter Name">
-      <label for="accidentalSelect">Accidental</label>
-      <select id="accidentalSelect" name="accidental-select">
-        <option value="sharp">&#9839;</option> <!--sharp-->
-        <option value="natural">&#9838;</option> <!--natural-->
-        <option value="flat">&#9837;</option> <!--flat-->
-      </select>
+    <!-- A Select menu for choosing the accidental -->
 
-      <!-- A Select menu for choosing the chord quality -->
+    <label for="accidentalSelect">Accidental</label>
+    <select id="accidentalSelect" name="accidental-select">
+      <option value="sharp">&#9839;</option> <!--sharp-->
+      <option value="natural">&#9838;</option> <!--natural-->
+      <option value="flat">&#9837;</option> <!--flat-->
+    </select>
 
-      <label for="qualitySelect">Quality</label>
-      <select id="qualitySelect" name="type-select">
-        <option value="major">Major</option>
-        <option value="minor">minor</option>
-        <option value="diminished">diminished</option>
-        <option value="augmented">augmented</option>
-      </select>
+    <!-- A Select menu for choosing the chord quality -->
 
-      <button id="chordInputButton" type="button">Suggest Chords</button>
+    <label for="qualitySelect">Quality</label>
+    <select id="qualitySelect" name="type-select">
+      <option value="major">Major</option>
+      <option value="minor">minor</option>
+      <option value="diminished">diminished</option>
+      <option value="augmented">augmented</option>
+    </select>
 
-    </form>
+    <button id="chordInputButton" type="button">Suggest Chords</button>
 
-    <ul id="chordSuggestionList" class="suggestion-list">
+  </form>
 
-    </ul>
+  <ul id="chordSuggestionList" class="suggestion-list">
 
-  </body>
-  <!-- <script type="text/javascript" src="js/Key.js"></script> -->
-  <script type="text/javascript" src="js/scripts.js"></script>
+  </ul>
+
+  <footer>
+
+  </footer>
+
+</body>
+<!-- <script type="text/javascript" src="js/Key.js"></script> -->
+<script type="text/javascript" src="js/scripts.js"></script>
 </html>

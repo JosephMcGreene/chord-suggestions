@@ -29,62 +29,50 @@ const noteNames = [
   'Bflat', 'Bnatural'
 ];
 
-const sharpKeys = [0, 'Gnatural', 'Dnatural', 'Anatural', 'Enatural', 'Bnatural', 'Fsharp', 'Csharp'];
-const flatKeys = [0, 'Fnatural', 'Bflat', 'Eflat', 'Aflat', 'Dflat', 'Gflat'];
-const cMajor = [0, 'C', 'D', 'E', 'F', 'G', 'A', 'B'];
+const sharpKeys = ['Gnatural', 'Dnatural', 'Anatural', 'Enatural', 'Bnatural', 'Fsharp', 'Csharp'];
+const flatKeys = ['Fnatural', 'Bflat', 'Eflat', 'Aflat', 'Dflat', 'Gflat'];
+const cMajor = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
 
-const orderOfSharps = [0, 'F', 'C', 'G', 'D', 'A', 'E', 'B'];
-const orderOfFlats = [0, 'B', 'E', 'A', 'D', 'G', 'C', 'F'];
-
-const accidentals = ['sharp', 'natural', 'flat'];
-const accidentalsHTML = ['&#9839;', '&#9838;', '&#9837;']
+const orderOfSharps = ['F', 'C', 'G', 'D', 'A', 'E', 'B'];
+const orderOfFlats = ['B', 'E', 'A', 'D', 'G', 'C', 'F'];
 
 const chordInput = document.querySelector('#chordInput');
 const inputButton = document.querySelector('#chordInputButton');
 const accidentalSelect = document.querySelector('#accidentalSelect');
 const qualitySelect = document.querySelector('#qualitySelect');
-let ul = document.querySelector('#chordSuggestionList');
+let suggestionList = document.querySelector('#chordSuggestionList');
 
     /**
-     * Establishes the key used to suggest chords once the user presses the inputButton. Two stages: (1)rearrange noteNames and noteNamesHTML then (2)construct a new Key to use to suggest chords.
+     * Establishes the key used to suggest chords once the user presses the inputButton.
      * @return  [Array]    an array containing the new key.
      */
 
 function establishKey() {
-  // Stage 1:
   if ( noteNames.includes(chordInput.value.toUpperCase() + accidentalSelect.value) ) {
     let tonic = chordInput.value.toUpperCase() + accidentalSelect.value;
     let key;
-
+    // If the user input is a key with sharps:
     if ( sharpKeys.includes(tonic) ) {
-      let numOfSharps = sharpKeys.indexOf(tonic); /** 1 for Gnatural, 2 for Dnatural, etc. */
-      let tonicSharps = orderOfSharps.filter( (i) => orderOfSharps.indexOf(i) <= numOfSharps );
-      
-      
-
-      // key = [];
+      let numOfSharps = sharpKeys.indexOf(tonic) + 1; /** 1 for Gnatural, 2 for Dnatural, etc. */
+      let tonicSharps = orderOfSharps.filter( i => orderOfSharps.indexOf(i) < numOfSharps );
+      tonicSharps.forEach( (val, idx) => tonicSharps[idx] = `${val}&#9839;` ); /** HTML Hex for sharp symbol */
     } 
+    // If the user input is a key with flats:
+    else if ( flatKeys.includes(tonic) ) {
+      let numOfFlats = flatKeys.indexOf(tonic) + 1; /** 1 for Fnatural, 2 for Bflat, etc. */
+      let tonicFlats = orderOfFlats.filter( i => orderOfFlats.indexOf(i) < numOfFlats );
+    }
+    else if ( tonic === 'Cnatural' ) {
+      key = cMajor;
+    }
 
-    // else if ( flatKeys.includes(tonic) ) {
-
-    // }
-    // else if ( tonic === 'Cnatural' ) {
-    //   key = cMajor;
-    // }
-
-    // }
+  } else {
+    let callingBS = document.createElement('li');
+    callingBS.innerHTML = `Umm... that key will make people hate you. Try again.`;
+    callingBS.className = 'suggestion-list';
+    suggestionList = callingBS.parentNode;
+    suggestionList.appendChild(callingBS);
   }
-
-  // Stage 2:
-
-  // let keyTonicList = document.createElement('li');
-  // keyTonicList.innerHTML = ``;
-  // keyTonicList.parentNode = ul;
-  // ul.appendChild(keyTonicList);
-
-  // console.log(noteNames);
-  // // console.log(keyTonicList);
-  // return key;
 }
 
 /* 
