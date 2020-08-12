@@ -1,3 +1,4 @@
+// Arrays for use in establishKey()
 const noteNames = [
            'Cnatural', 'Csharp',
   'Dflat', 'Dnatural', 'Dsharp',
@@ -7,7 +8,6 @@ const noteNames = [
   'Aflat', 'Anatural', 'Asharp',
   'Bflat', 'Bnatural'
 ];
-
 const sharpKeysMajor = ['Gnatural', 'Dnatural', 'Anatural', 'Enatural', 'Bnatural', 'Fsharp', 'Csharp'];
 const flatKeysMajor = ['Fnatural', 'Bflat', 'Eflat', 'Aflat', 'Dflat', 'Gflat'];
 
@@ -19,11 +19,17 @@ let scaleNotes = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
 const orderOfSharps = ['F&#9839;', 'C&#9839;', 'G&#9839;', 'D&#9839;', 'A&#9839;', 'E&#9839;', 'B&#9839;'];
 const orderOfFlats = ['B&#9837;', 'E&#9837;', 'A&#9837;', 'D&#9837;', 'G&#9837;', 'C&#9837;', 'F&#9837;'];
 
+// DOM Selectors
 const chordInput = document.querySelector('#chordInput');
 const inputButton = document.querySelector('#chordInputButton');
 const accidentalSelect = document.querySelector('#accidentalSelect');
 const qualitySelect = document.querySelector('#qualitySelect');
 let chordSuggestions = document.querySelector('#chordSuggestionList');
+let keyAnnounce = document.createElement('h2');
+let chordSuggest = document.createElement('h2');
+let startOtherButton = document.createElement('button');
+let suggestOtherButton = document.createElement('button');
+// To be defined later
 let key;
 let tonic;
 let tonicAccidentals;
@@ -47,21 +53,46 @@ function getKeyAccidentals(keysArray, orderOfArray) {
    */
 function finishKey() {
   while ( chordInput.value.toUpperCase() !== scaleNotes[0] ) {
-    let shiftNote = scaleNotes.shift();
-    scaleNotes.push(shiftNote);
+    let shiftNote = scaleNotes.shift(); scaleNotes.push(shiftNote);
   }
   // This loop finds the appropriate note(s) to replace in scaleNotes[] from the corresponding note(s) in tonicAccidentals[].
-  for ( let i = 0; i < tonicAccidentals.length; i++ ) {
+  for (let i = 0; i < tonicAccidentals.length; i++) {
   scaleNotes.splice( scaleNotes.indexOf(tonicAccidentals[i].charAt(0)) , 1, tonicAccidentals[i]);
+  }
+  if (qualitySelect.value === 'Major') {
+    for (let i = 0; i < scaleNotes.length; i++) {
+      while (i === 0 || i === 3 || i === 4) {
+        scaleNotes.splice(i, 1, scaleNotes[i] + " Major");
+      }
+      while (i === 1 || i === 2 || i === 5) {
+        scaleNotes.splice(i, 1, scaleNotes[i] + " minor");
+      }
+      while (i === 6) {
+        scaleNotes.splice(i, 1, scaleNotes[i] + " diminished");
+      }    
+    }
+  } 
+  else if (qualitySelect.value === 'minor') {
+    for (let i = 0; i < scaleNotes.length; i++) {
+      while (i === 2 || i === 4 || i === 5) {
+        scaleNotes.splice(i, 1, scaleNotes[i] + " Major");
+      }
+      while (i === 0 || i === 3 || i === 6) {
+        scaleNotes.splice(i, 1, scaleNotes[i] + " minor");
+      }
+      while (i === 1) {
+        scaleNotes.splice(i, 1, scaleNotes[i] + " diminished");
+      }
+    }
   }
   return scaleNotes;
 }
 
   /**
-   * A logic statement checking to make sure the user inputs a letter A through G
+   * A logic statement checking to make sure the user inputs a letter A through G. Used in error messages in establishKey()
    * @return  Boolean    whether the user's input is a music note or not.
    */
-function notAMusicNote() {
+function isAMusicNote() {
   if ( chordInput.value.toUpperCase() !== 'A' && chordInput.value.toUpperCase() !== 'B' && chordInput.value.toUpperCase() !== 'C' && chordInput.value.toUpperCase() !== 'D' && chordInput.value.toUpperCase() !== 'E' && chordInput.value.toUpperCase() !== 'F' && chordInput.value.toUpperCase() !== 'G' ) {
     return true;
   } else { return false; }
@@ -69,12 +100,12 @@ function notAMusicNote() {
 
   /**
    * Establishes the key used to suggest chords once the user presses --inputButton--, or tells user to input something else.
-   * Uses both getKeyAccidentals() and finishKey().
+   * Uses getKeyAccidentals(), finishKey(), and isAMusicNote().
    * @return  [Array]    an array containing the new key.
    */
 function establishKey() {
   // for Major keys
-  if ( noteNames.includes(chordInput.value.toUpperCase() + accidentalSelect.value) && qualitySelect.value.toLowerCase() === 'major' ) {
+  if ( sharpKeysMajor.concat(flatKeysMajor).includes(chordInput.value.toUpperCase()) + accidentalSelect.value && qualitySelect.value.toLowerCase() === 'major' ) {
     tonic = chordInput.value.toUpperCase() + accidentalSelect.value;
     // If the user input is a key with sharps:
     if ( sharpKeysMajor.includes(tonic) ) {
@@ -93,7 +124,7 @@ function establishKey() {
     }
   }
   // for minor keys
-  if ( noteNames.includes(chordInput.value.toUpperCase() + accidentalSelect.value) && qualitySelect.value.toLowerCase() === 'minor' ) {
+  if ( sharpKeysMinor.concat(flatKeysMinor).includes(chordInput.value.toUpperCase() + accidentalSelect.value) && qualitySelect.value.toLowerCase() === 'minor' ) {
     tonic = chordInput.value.toUpperCase() + accidentalSelect.value;
     // If the user input is a key with sharps:
     if ( sharpKeysMinor.includes(tonic) ) {
@@ -110,10 +141,12 @@ function establishKey() {
 
     else if ( tonic === 'Anatural' ) {
       key = scaleNotes.sort();
+      key.splice(4, 1, 'E Major');
+      key.splice(6, 1, 'G&#9839;');
     }
   }
   // Errors
-  else if ( notAMusicNote() ) {
+  else if ( isAMusicNote() ) {
     let callingBS = document.createElement('li');
     callingBS.innerHTML = `That letter is not used in music. Try a letter A-G.`;
     chordSuggestions.appendChild(callingBS);
@@ -130,21 +163,13 @@ function establishKey() {
 */
 
 inputButton.addEventListener( 'click', () => {
-  if ( scaleNotes === ['C', 'D', 'E', 'F', 'G', 'A', 'B'] ) {
-    establishKey();
-  }
-  else if ( scaleNotes !== ['C', 'D', 'E', 'F', 'G', 'A', 'B'] ) {
     scaleNotes = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
+    if (  )
     establishKey();
-  }
 
-  let keyAnnounce = document.createElement('h2');
-  let chordSuggest = document.createElement('h2');
-  let startOtherButton = document.createElement('button');
-  let suggestOtherButton = document.createElement('button');
-
-  keyAnnounce.innerHTML = `Well, start with <strong>${chordInput.value.toUpperCase()} ${qualitySelect.value}</strong>`;
+  keyAnnounce.innerHTML = `Well, start with <strong>${chordInput.value.toUpperCase()}</strong>`;
   startOtherButton.innerHTML = `Start on a different Chord`;
+
   chordSuggest.innerHTML = `then try ${key[3]} or ${key[4]}`;
   suggestOtherButton.innerHTML = `Try something different`;
 
