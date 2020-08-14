@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Chord Suggestions</title>
+  <title>&#127925; Chord Suggestions</title>
   <link rel="stylesheet" type="text/css" href="normalize.css">
   <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
@@ -13,19 +13,18 @@
 
   <form action="index.html" method="post">
 
+    <!-- An Input for the letter name of the starting key of the music -->
     <input id="chordInput" type="text" placeholder="Letter Name">
 
     <!-- A Select menu for choosing the accidental -->
-
     <label for="accidentalSelect">Accidental</label>
     <select id="accidentalSelect" name="accidental-select">
-      <option value="sharp">&#9839;</option> <!--sharp-->
       <option value="natural">&#9838;</option> <!--natural-->
+      <option value="sharp">&#9839;</option> <!--sharp-->
       <option value="flat">&#9837;</option> <!--flat-->
     </select>
 
     <!-- A Select menu for choosing Major or minor key -->
-
     <label for="qualitySelect">Quality</label>
     <select id="qualitySelect" name="type-select">
       <option value="Major">Major</option>
@@ -36,16 +35,15 @@
 
   </form>
 
-  <ul id="chordSuggestionList" class="suggestion-list">
-
-  </ul>
+  <main id="chordSuggestionList" class="suggestion-list">
+    
+  </main>
 
   <footer>
 
   </footer>
 
 </body>
-<!-- <script type="text/javascript" src="js/Key.js"></script> -->
-<script type="text/javascript" src="js/Key.js"></script>
+<script type="text/javascript" src="js/App.js"></script>
 <script type="text/javascript" src="js/scripts.js"></script>
 </html>
