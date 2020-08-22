@@ -1,3 +1,4 @@
+// @ts-nocheck
 // ========== Arrays for use in establishKey()
 const sharpKeysMajor = ['Cnatural', 'Gnatural', 'Dnatural', 'Anatural', 'Enatural', 'Bnatural', 'Fsharp', 'Csharp'];
 const flatKeysMajor = ['Cnatural', 'Fnatural', 'Bflat', 'Eflat', 'Aflat', 'Dflat', 'Gflat'];
@@ -7,8 +8,8 @@ const flatKeysMinor = ['Anatural', 'Dnatural', 'Gnatural', 'Cnatural', 'Fnatural
 
 let scaleNotes = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
 
-const orderOfSharps = ['F&#9839;', 'C&#9839;', 'G&#9839;', 'D&#9839;', 'A&#9839;', 'E&#9839;', 'B&#9839;'];
-const orderOfFlats = ['B&#9837;', 'E&#9837;', 'A&#9837;', 'D&#9837;', 'G&#9837;', 'C&#9837;', 'F&#9837;'];
+const orderOfSharps = ['F sharp', 'C sharp', 'G sharp', 'D sharp', 'A sharp', 'E sharp', 'B sharp'];
+const orderOfFlats = ['B flat', 'E flat', 'A flat', 'D flat', 'G flat', 'C flat', 'F flat'];
 
 // ========== DOM Selectors
 const chordInput = document.querySelector('#chordInput');
@@ -16,11 +17,7 @@ const inputButton = document.querySelector('#chordInputButton');
 const accidentalSelect = document.querySelector('#accidentalSelect');
 const qualitySelect = document.querySelector('#qualitySelect');
 let chordSuggestionsList = document.querySelector('#chordSuggestionList');
-let keyAnnounce = document.createElement('h2');
-let chordSuggest1 = document.createElement('h3');
-let li = document.querySelector('li');
-let startOtherButton = document.createElement('button');
-let suggestOtherButton = document.createElement('button');
+
 // ========== To be defined later on
 let tonic;
 let tonicAccidentals;
@@ -28,17 +25,18 @@ let key;
 let currentKey;
 
   /**
-   * Uses array from getKeyAccidentals() to finish constructing an array containing the notes necessary to return a key in establishKey();
+   * Uses tonicAccidentals[] made in establishKey() to finish constructing an array containing the notes necessary to return a key in establishKey();
    * @return  [Array]    an array containing the new key.
    */
 function finishKey() {
   while ( chordInput.value.toUpperCase() !== scaleNotes[0] ) {
     let shiftNote = scaleNotes.shift(); scaleNotes.push(shiftNote);
   }
-  // This loop finds the appropriate note(s) to replace in scaleNotes[] from the corresponding note(s) in tonicAccidentals[].
+  // This loop finds the appropriate note(s) to replace in scaleNotes[] from their corresponding note(s) in tonicAccidentals[];
   for (let i = 0; i < tonicAccidentals.length; i++) {
   scaleNotes.splice( scaleNotes.indexOf(tonicAccidentals[i].charAt(0)) , 1, tonicAccidentals[i]);
   }
+  // The following loops add the appropriate quality to the name of the chords, whether it be in Major or minor;
   if (qualitySelect.value === 'Major') {
     for (let i = 0; i < scaleNotes.length; i++) {
       if (i === 0 || i === 3 || i === 4) {
@@ -97,6 +95,7 @@ function establishKey(keysArray1, keysArray2) {
   // If the user input is a key with sharps:
   if ( keysArray1.includes(tonic) ) {
     let numOfAccidentals = keysArray1.indexOf(tonic);
+    // This filter makes tonicAccidentals[] a list, in order of Sharps/Flats, of the accidentals the tonic key contains;
     tonicAccidentals = orderOfSharps.filter( i => orderOfSharps.indexOf(i) < numOfAccidentals );
     finishKey();
     key = scaleNotes;
@@ -116,29 +115,26 @@ function establishKey(keysArray1, keysArray2) {
 /* 
 ============================== Event Listeners ==============================
 */
-
 inputButton.addEventListener( 'click', () => {
   scaleNotes = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
   // for major keys:
   if ( isMajorOrMinor('major') ) {
     establishKey(sharpKeysMajor, flatKeysMajor);
-    console.log(key);
-    console.log(currentKey);
+    renderSuggestions();
   }
-  // for minor keys
+  // for minor keys:
   else if ( isMajorOrMinor('minor') ) {
     establishKey(sharpKeysMinor, flatKeysMinor);
-    console.log(key);
-    console.log(currentKey);
+    renderSuggestions();
   }
   // Errors
   else if ( isAMusicNote() ) {
-    let callingBS = document.createElement('li');
+    let callingBS = document.createElement('p');
     callingBS.innerHTML = `That letter is not used in music. Try a letter A-G.`;
     chordSuggestionsList.appendChild(callingBS);
   }
   else if ( ! sharpKeysMajor.concat(flatKeysMajor).includes(chordInput.value.toUpperCase() + accidentalSelect.value) ) {
-    let callingBS = document.createElement('li');
+    let callingBS = document.createElement('p');
     callingBS.innerHTML = `Umm... That key will make people hate you. Make sure you chose the right accidental (&#9839;, &#9838;, or &#9837;).`;
     chordSuggestionsList.appendChild(callingBS);
   }
