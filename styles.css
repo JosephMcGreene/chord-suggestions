@@ -14,7 +14,7 @@ body {
 
 h1 {
   font-size: 2.75em;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 h2 {
@@ -24,6 +24,17 @@ h2 {
 h3 {
   font-size: 1.9em;
   margin-top: 60px;
+}
+
+form {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+label {
+  margin: 0px 6px 0px 20px;
 }
 
 h2,
@@ -41,22 +52,17 @@ select {
   padding: 6px;
 }
 
-li {
-  list-style: none;
-}
-
-ul {
-  display: flex;
-  flex-direction: column;
+form button {
+  margin-left: 20px;
 }
 
 section {
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
 }
 
 hr {
-  min-width: 20vw;
+  min-width: 25vw;
   margin-top: 30px;
 }
 
@@ -64,14 +70,37 @@ section h3 {
   margin-top: 15px;
 }
 
-h3 button {
-  margin: 15px;
+section h3 button {
+  margin: 8px;
   font-size: 1.1rem;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+}
+
+li {
+  margin: 0px 10px 0px 10px;
+  list-style: none;
 }
 
 button,
 .exo2-font {
   font-family: 'exo 2', sans-serif;
+}
+
+.form-container {
+  display: block;
+  max-width: 65vw;
+  margin: 0 auto;
+}
+
+.suggestions {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .center-text {
@@ -83,9 +112,13 @@ button,
 }
 
 .text-shadow {
-  text-shadow: 2px 3px 4px rgb(45, 12, 54);
+  text-shadow: 2px 3px 4px rgb(23, 6, 27);
 }
 
 .box-shadow {
-  box-shadow: inset 0px 0px 2px 2px rgb(45, 12, 54);
+  box-shadow: inset 0px 0px 3px 3px rgb(45, 12, 54);
+}
+
+button:active {
+  background-color: rgb(168, 167, 167);
 }

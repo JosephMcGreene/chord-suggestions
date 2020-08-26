@@ -1,4 +1,3 @@
-// @ts-nocheck
 // ========== Arrays for use in establishKey()
 const sharpKeysMajor = ['Cnatural', 'Gnatural', 'Dnatural', 'Anatural', 'Enatural', 'Bnatural', 'Fsharp', 'Csharp'];
 const flatKeysMajor = ['Cnatural', 'Fnatural', 'Bflat', 'Eflat', 'Aflat', 'Dflat', 'Gflat'];
@@ -19,22 +18,24 @@ const qualitySelect = document.querySelector('#qualitySelect');
 let chordSuggestionsList = document.querySelector('#chordSuggestionList');
 
 // ========== To be defined later on
-let tonic;
-let tonicAccidentals;
-let key;
-let currentKey;
+let tonic; /** Will be the note input by the user */
+let tonicAccidentals; /** Will be an array */
+let key;  /** Will be an array */
+let currentKey; /** will be an object in the Key class */
 
   /**
    * Uses tonicAccidentals[] made in establishKey() to finish constructing an array containing the notes necessary to return a key in establishKey();
    * @return  [Array]    an array containing the new key.
    */
 function finishKey() {
+  // This loop rearranges the notes in the scale to make tonic index 0 for Key instantation purposes;
   while ( chordInput.value.toUpperCase() !== scaleNotes[0] ) {
-    let shiftNote = scaleNotes.shift(); scaleNotes.push(shiftNote);
+    let shiftNote = scaleNotes.shift();
+    scaleNotes.push(shiftNote);
   }
   // This loop finds the appropriate note(s) to replace in scaleNotes[] from their corresponding note(s) in tonicAccidentals[];
   for (let i = 0; i < tonicAccidentals.length; i++) {
-  scaleNotes.splice( scaleNotes.indexOf(tonicAccidentals[i].charAt(0)) , 1, tonicAccidentals[i]);
+  scaleNotes.splice( scaleNotes.indexOf(tonicAccidentals[i].charAt(0)), 1, tonicAccidentals[i] );
   }
   // The following loops add the appropriate quality to the name of the chords, whether it be in Major or minor;
   if (qualitySelect.value === 'Major') {
