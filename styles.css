@@ -1,3 +1,5 @@
+/* ========== HTML Tags ========== */
+
 * {
   box-sizing: border-box;
 }
@@ -7,15 +9,16 @@ html {
 }
 
 body {
-  /* background-color: hsl(286, 46%, 33%); */
-  background-color: black;
+  background-color: hsl(286, 46%, 33%);
   color: rgb(235, 235, 235);
   min-height: 100vh;
+  font-weight: 600;
 }
 
 h1 {
-  font-size: 2.75em;
-  margin-bottom: 20px;
+  font-size: 4.2em;
+  font-weight: 800;
+  margin: 20px 20px;
 }
 
 h2 {
@@ -27,48 +30,22 @@ h3 {
   margin-top: 60px;
 }
 
-form {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  align-items: center;
-}
-
 label {
   margin: 0px 6px 0px 20px;
 }
 
-h2,
-h3,
-p,
-input,
-button,
-select {
-  font-weight: 600;
+button {
+  padding: 18px 25px 18px 25px;
 }
 
-button,
 input,
 select {
-  padding: 6px;
-}
-
-form button {
-  margin-left: 20px;
-}
-
-section {
-  display: flex;
-  flex-flow: column wrap;
+  padding: 10px;
 }
 
 hr {
-  min-width: 25vw;
+  max-width: 25vw;
   margin-top: 30px;
-}
-
-section h3 {
-  margin-top: 15px;
 }
 
 section h3 button {
@@ -76,36 +53,30 @@ section h3 button {
   font-size: 1.1rem;
 }
 
-ul {
+/* ========== Flex Items ========== */
+
+header {
   display: flex;
-  flex-direction: column;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-content: center;
 }
-
-li {
-  margin: 0px 10px 0px 10px;
-  list-style: none;
-}
-
-button,
-.exo2-font {
-  font-family: 'exo 2', sans-serif;
-}
+    h1,
+    h2,
+    h3 {
+      text-align: center;
+    }
 
 .form-container {
-  display: block;
-  max-width: 65vw;
-  margin: 0 auto;
-}
-
-.suggestions {
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: column wrap;
   justify-content: center;
-  align-items: center;
+  align-content: center;
 }
+/* ========== Classes ========== */
 
-.center-text {
-  text-align: center;
+.exo2-font {
+  font-family: 'exo 2', sans-serif;
 }
 
 .round-border {
@@ -117,9 +88,20 @@ button,
 }
 
 .box-shadow {
-  box-shadow: inset 0px 0px 3px 3px rgb(45, 12, 54);
+  box-shadow: inset 0px 0px 4px 4px rgb(45, 12, 54);
+}
+
+.acc-qual-select {
+  margin: 15px 0px 15px 0px;
+}
+
+.input-button {
+  display: block;
+  margin: 18px auto;
 }
 
 button:active {
   background-color: rgb(168, 167, 167);
 }
+
+/* ========== Media Queries ========== */

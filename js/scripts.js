@@ -121,12 +121,12 @@ inputButton.addEventListener( 'click', () => {
   // for major keys:
   if ( isMajorOrMinor('major') ) {
     establishKey(sharpKeysMajor, flatKeysMajor);
-    renderSuggestions();
+    renderSuggestions1();
   }
   // for minor keys:
   else if ( isMajorOrMinor('minor') ) {
     establishKey(sharpKeysMinor, flatKeysMinor);
-    renderSuggestions();
+    renderSuggestions1();
   }
   // Errors
   else if ( isAMusicNote() ) {

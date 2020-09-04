@@ -3,7 +3,7 @@
   /**
    * Uses React to render the chord suggestions derived from establishKey() to the DOM;
    */
-function renderSuggestions() {
+function renderSuggestions1() {
   const Section = () => {
     return (
       <section>
