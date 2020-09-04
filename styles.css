@@ -16,18 +16,18 @@ body {
 }
 
 h1 {
-  font-size: 4.2em;
+  font-size: 5.5em;
   font-weight: 800;
   margin: 20px 20px;
 }
 
 h2 {
-  font-size: 1.15em;
+  font-size: 1.6em;
   margin-bottom: 76.2265px;
 }
 
 h3 {
-  font-size: 1.9em;
+  font-size: 2.3em;
 }
 
 label {
@@ -119,6 +119,21 @@ button:active {
 }
 
 /* ========== Media Queries ========== */
+
+@media (min-width: 800px) {
+
+  h1 {
+    font-size: 4.2em;
+  }
+
+  h2 {
+    font-size: 1.15em;
+  }
+
+  h3 {
+    font-size: 1.9em;
+  }
+}
 
 @media (min-width: 1200px) {
   
