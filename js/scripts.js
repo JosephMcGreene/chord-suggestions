@@ -133,10 +133,12 @@ inputButton.addEventListener( 'click', () => {
     let callingBS = document.createElement('p');
     callingBS.innerHTML = `That letter is not used in music. Try a letter A-G.`;
     chordSuggestionsList.appendChild(callingBS);
+    chordSuggestionsList.removeChild(callingBS.previousSibling);
   }
   else if ( ! sharpKeysMajor.concat(flatKeysMajor).includes(chordInput.value.toUpperCase() + accidentalSelect.value) ) {
     let callingBS = document.createElement('p');
     callingBS.innerHTML = `Umm... That key will make people hate you. Make sure you chose the right accidental (&#9839;, &#9838;, or &#9837;).`;
     chordSuggestionsList.appendChild(callingBS);
+    chordSuggestionsList.removeChild(callingBS.previousSibling);
   }
 });

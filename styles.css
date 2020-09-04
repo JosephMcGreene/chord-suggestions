@@ -23,11 +23,11 @@ h1 {
 
 h2 {
   font-size: 1.15em;
+  margin-bottom: 76.2265px;
 }
 
 h3 {
   font-size: 1.9em;
-  margin-top: 60px;
 }
 
 label {
@@ -53,7 +53,21 @@ section h3 button {
   font-size: 1.1rem;
 }
 
-/* ========== Flex Items ========== */
+p {
+  text-align: center;
+}
+
+/* ========== Flex Parents/Items ========== */
+
+ul {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-content: center;
+}
+    li {
+      margin: 0px 8px;
+    }
 
 header {
   display: flex;
@@ -105,3 +119,12 @@ button:active {
 }
 
 /* ========== Media Queries ========== */
+
+@media (min-width: 1200px) {
+  
+  button,
+  input,
+  select {
+    padding: 10px;
+  }
+}
