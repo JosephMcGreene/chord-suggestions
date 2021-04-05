@@ -1,0 +1,105 @@
+/* ========== Fonts ========== */
+/* https://www.fontsquirrel.com/fonts/Enigmatic?filter%5Bclassifications%5D%5B0%5D=retro&filter%5Bclassifications%5D%5B1%5D=sans+serif&filter%5Bdownload%5D=local&filter%5Blicense%5D%5B0%5D=web */
+@font-face {
+  font-family: "enigmaticregular";
+  src: url("../../fonts/Enigmatic-fontfacekit/web-fonts/enigmatic_regular_macroman/Enigma__2-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "enigmaticbold";
+  src: url("../../fonts/Enigmatic-fontfacekit/web-fonts/enigmatic_bold_macroman/EnigmaB_2-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+/* ========== HTML Tags ========== */
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 16px;
+}
+
+body {
+  font-family: "enigmaticbold", sans-serif;
+  letter-spacing: 0.1rem;
+  margin: 0;
+  padding: 0;
+  background-color: #692d7b;
+  color: #ebebeb;
+  min-height: 100vh;
+}
+
+header,
+label {
+  text-shadow: 2px 3px 4px #17061b;
+}
+
+h1 {
+  text-align: center;
+  overflow-wrap: break-word;
+  margin: 10px 0;
+  font-size: 3.5rem;
+  font-weight: 800;
+  hyphens: auto;
+}
+
+h2 {
+  text-align: center;
+  overflow-wrap: keep-all;
+  font-size: 2rem;
+  margin-bottom: 4rem;
+}
+
+h3 {
+  text-align: center;
+  overflow-wrap: keep-all;
+  font-size: 1.5rem;
+}
+
+.acc-qual-select {
+  margin: 15px 0px 15px 0px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+input,
+select {
+  padding: 10px;
+}
+
+input,
+button {
+  font-family: "enigmaticregular", sans-serif;
+  letter-spacing: 0.03rem;
+  display: block;
+  margin: 0 auto;
+}
+
+input,
+select,
+button {
+  border-radius: 7px;
+  box-shadow: inset 0px 0px 4px 4px #2d0c36;
+}
+
+button {
+  padding: 18px 25px;
+}
+button:active {
+  background-color: #a8a7a7;
+}
+
+hr {
+  max-width: 25vw;
+  margin-top: 30px;
+}
+
+main {
+  text-align: center;
+}
+
+/*# sourceMappingURL=style.css.map */

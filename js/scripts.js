@@ -12,16 +12,17 @@ const orderOfFlats = ['B flat', 'E flat', 'A flat', 'D flat', 'G flat', 'C flat'
 
 // ========== DOM Selectors
 const chordInput = document.querySelector('#chordInput');
-const inputButton = document.querySelector('#chordInputButton');
+const suggestButton1 = document.querySelector('#suggestButton1');
 const accidentalSelect = document.querySelector('#accidentalSelect');
 const qualitySelect = document.querySelector('#qualitySelect');
 let chordSuggestionsList = document.querySelector('#chordSuggestionList');
+const main = document.querySelector('main');
 
 // ========== To be defined later on
-let tonic; /** Will be the note input by the user */
-let tonicAccidentals; /** Will be an array */
-let key;  /** Will be an array */
-let currentKey; /** will be an object in the Key class */
+let tonic; /** Will be the note put in by the user */
+let tonicAccidentals; /** Will be an array containing the letter names of the accidentals in the user's key */
+let key;  /** Will be an array of notes containing the notes of the key put in by the user */
+let currentKey; /** Will be an object in the Key class whose properties are derived from key[] */
 
   /**
    * Uses tonicAccidentals[] made in establishKey() to finish constructing an array containing the notes necessary to return a key in establishKey();
@@ -68,7 +69,15 @@ function finishKey() {
    * @return  Boolean    whether the user's input is a music note or not.
    */
 function isAMusicNote() {
-  if ( chordInput.value.toUpperCase() !== 'A' && chordInput.value.toUpperCase() !== 'B' && chordInput.value.toUpperCase() !== 'C' && chordInput.value.toUpperCase() !== 'D' && chordInput.value.toUpperCase() !== 'E' && chordInput.value.toUpperCase() !== 'F' && chordInput.value.toUpperCase() !== 'G' ) {
+  if ( 
+    chordInput.value.toUpperCase() !== 'A' &&
+    chordInput.value.toUpperCase() !== 'B' && 
+    chordInput.value.toUpperCase() !== 'C' && 
+    chordInput.value.toUpperCase() !== 'D' && 
+    chordInput.value.toUpperCase() !== 'E' && 
+    chordInput.value.toUpperCase() !== 'F' && 
+    chordInput.value.toUpperCase() !== 'G'
+    ) {
     return true;
   } else { return false; }
 }
@@ -81,11 +90,11 @@ function isAMusicNote() {
 function isMajorOrMinor(majorMinor) {
   if ( sharpKeysMajor.concat(flatKeysMajor).includes(chordInput.value.toUpperCase() + accidentalSelect.value) && qualitySelect.value.toLowerCase() === majorMinor ) {
     return true; } 
-  else { return false};
+  else { return false };
 }
 
   /**
-   * Establishes the key used to suggest chords once the user presses --inputButton--, or tells user to input something else.
+   * Establishes the key used to suggest chords once the user presses --suggestButton1--, or tells user to input something else.
    * Uses getKeyAccidentals(), finishKey(), and isAMusicNote().
    * @param   keysArray1  sharpKeysMajor[] or sharpKeysMinor[]
    * @param   keysArray2  flatKeysMajor[] or flatKeysMinor[]
@@ -116,17 +125,30 @@ function establishKey(keysArray1, keysArray2) {
 /* 
 ============================== Event Listeners ==============================
 */
-inputButton.addEventListener( 'click', () => {
+suggestButton1.addEventListener('click', () => {
   scaleNotes = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
   // for major keys:
   if ( isMajorOrMinor('major') ) {
     establishKey(sharpKeysMajor, flatKeysMajor);
-    renderSuggestions1();
+
+    let hr = document.createElement('hr');
+    let chordSuggestion1 = document.createElement('button');
+    let chordSuggestion2 = document.createElement('button');
+    chordSuggestion1.className = "round-border box-shadow suggestions-button";
+    chordSuggestion2.className = "round-border box-shadow suggestions-button";
+    chordSuggestion1.innerHTML = `${currentKey.subdominant}`;
+    chordSuggestion2.innerHTML = `${currentKey.dominant}`;
+    hr = hr + document.querySelector('body').insertBefore(hr, main);
+    chordSuggestionsList.appendChild(chordSuggestion1);
+    chordSuggestionsList.appendChild(chordSuggestion2);
+
   }
   // for minor keys:
   else if ( isMajorOrMinor('minor') ) {
     establishKey(sharpKeysMinor, flatKeysMinor);
-    renderSuggestions1();
+
+    console.log(currentKey);
+
   }
   // Errors
   else if ( isAMusicNote() ) {

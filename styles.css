@@ -1,41 +1,53 @@
+/* ========== Fonts ========== */
+/* https://www.fontsquirrel.com/fonts/Enigmatic?filter%5Bclassifications%5D%5B0%5D=retro&filter%5Bclassifications%5D%5B1%5D=sans+serif&filter%5Bdownload%5D=local&filter%5Blicense%5D%5B0%5D=web */
+@font-face {
+    font-family: 'enigmaticregular';
+    src: url('fonts/Enigmatic-fontfacekit/web-fonts/enigmatic_bold_macroman/EnigmaB_2-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 /* ========== HTML Tags ========== */
 
 * {
   box-sizing: border-box;
 }
 
-html {
-  max-width: 100vw;
+:root {
+  font-size: 16px;
 }
 
 body {
+  margin: 0;
+  padding: 0;
   background-color: hsl(286, 46%, 33%);
   color: rgb(235, 235, 235);
   min-height: 100vh;
+  font-family: 'enigmaticregular', sans-serif;
+  letter-spacing: .1rem;
   font-weight: 600;
 }
 
 h1 {
-  font-size: 5.5em;
+  margin: 10px 0;
+  font-size: 3.5rem;
   font-weight: 800;
-  margin: 20px 20px;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-align: center;
 }
 
 h2 {
-  font-size: 1.6em;
-  margin-bottom: 76.2265px;
+  font-size: 2rem;
+  margin-bottom: 4rem;
+  overflow-wrap: keep-all;
+  text-align: center;
 }
 
 h3 {
-  font-size: 2.3em;
-}
-
-label {
-  margin: 0px 6px 0px 20px;
-}
-
-button {
-  padding: 18px 25px 18px 25px;
+  font-size: 1.5rem;
+  overflow-wrap: keep-all;
+  text-align: center;
 }
 
 input,
@@ -43,55 +55,27 @@ select {
   padding: 10px;
 }
 
+input,
+button {
+  font-family: 'enigmaticregular', sans-serif;
+  letter-spacing: .03rem;
+  display: block;
+  margin: 0 auto;
+}
+
+button {
+  padding: 18px 25px;
+}
+  button:active {
+    background-color: rgb(168, 167, 167);
+  }
+
 hr {
   max-width: 25vw;
   margin-top: 30px;
 }
 
-section h3 button {
-  margin: 8px;
-  font-size: 1.1rem;
-}
-
-p {
-  text-align: center;
-}
-
-/* ========== Flex Parents/Items ========== */
-
-ul {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  align-content: center;
-}
-    li {
-      margin: 0px 8px;
-    }
-
-header {
-  display: flex;
-  flex-flow: column wrap;
-  justify-content: center;
-  align-content: center;
-}
-    h1,
-    h2,
-    h3 {
-      text-align: center;
-    }
-
-.form-container {
-  display: flex;
-  flex-flow: column wrap;
-  justify-content: center;
-  align-content: center;
-}
 /* ========== Classes ========== */
-
-.exo2-font {
-  font-family: 'exo 2', sans-serif;
-}
 
 .round-border {
   border-radius: 7px;
@@ -107,20 +91,16 @@ header {
 
 .acc-qual-select {
   margin: 15px 0px 15px 0px;
-}
 
-.input-button {
-  display: block;
-  margin: 18px auto;
-}
-
-button:active {
-  background-color: rgb(168, 167, 167);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 /* ========== Media Queries ========== */
 
-@media (min-width: 800px) {
+/* @media (min-width: 800px) {
 
   h1 {
     font-size: 4.2em;
@@ -142,4 +122,4 @@ button:active {
   select {
     padding: 10px;
   }
-}
+} */

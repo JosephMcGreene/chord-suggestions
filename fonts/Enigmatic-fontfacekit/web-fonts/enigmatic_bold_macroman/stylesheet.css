@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'enigmaticregular';
+    src: url('EnigmaB_2-webfont.eot');
+    src: url('EnigmaB_2-webfont.eot?#iefix') format('embedded-opentype'),
+         url('EnigmaB_2-webfont.woff2') format('woff2'),
+         url('EnigmaB_2-webfont.woff') format('woff'),
+         url('EnigmaB_2-webfont.ttf') format('truetype'),
+         url('EnigmaB_2-webfont.svg#enigmaticregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+

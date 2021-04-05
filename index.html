@@ -2,50 +2,48 @@
 <html lang="en-US">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
   <meta name="description" content="Chord Suggestions helps musicians build chord progressions. Input a key for the music to start, and explore from there!">
   <title>&#127925; Chord Suggestions &#127925;</title>
-  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@600;800&display=swap" rel="stylesheet"> 
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@600;800&display=swap" rel="stylesheet">  -->
   <!-- CSS rule => font-family: 'Exo 2', sans-serif; -->
-  <link rel="stylesheet" type="text/css" href="normalize.css">
-  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" type="text/css" href="dist/css/style.css">
 </head>
     <!-- =========================================== -->
 <body class="exo2-font">
   <header>
-    <h1 class="text-shadow">Chord Suggestions</h1>
-    <h2 class="text-shadow">Let's build a chord progression!</h2>
-    <h3 for="chordInput" class="text-shadow">What key is our music in?</h3>
+    <h1>Chord Suggestions</h1>
+    <h2>Let's build a chord progression!</h2>
+    <h3 for="chordInput">What key is our music in?</h3>
   </header>
 
-  <div class="form-container">
-    <form action="index.html" method="post">
+  <form action="index.html" method="post">
 
-      <!-- An Input for the letter name of the starting key of the music -->
-      <input id="chordInput" class="round-border box-shadow" type="text" placeholder="Letter Name">
+    <!-- An Input for the letter name of the starting key of the music -->
+    <input id="chordInput" class="box-shadow" type="text" placeholder="Letter Name" />
 
-      <!-- A Select menu for choosing the accidental -->
-      <div class="acc-qual-select">
-        <label for="accidentalSelect" class="text-shadow">Accidental</label>
-        <select id="accidentalSelect" class="round-border box-shadow" name="accidental-select">
-          <option value="natural">&#9838;</option> <!--natural-->
-          <option value="sharp">&#9839;</option> <!--sharp-->
-          <option value="flat">&#9837;</option> <!--flat-->
-        </select>
-      </div>
+    <!-- A Select menu for choosing the accidental -->
+    <div class="acc-qual-select">
+      <label for="accidentalSelect">Accidental</label>
+      <select id="accidentalSelect" class="box-shadow" name="accidental-select">
+        <option value="natural">&#9838;</option> <!--natural-->
+        <option value="sharp">&#9839;</option> <!--sharp-->
+        <option value="flat">&#9837;</option> <!--flat-->
+      </select>
+    </div>
 
-      <!-- A Select menu for choosing Major or minor key -->
-      <div class="acc-qual-select">
-        <label for="qualitySelect" class="text-shadow">Quality</label>
-        <select id="qualitySelect" class="round-border box-shadow" name="type-select">
-          <option value="Major">Major</option>
-          <option value="minor">minor</option>
-        </select>
-      </div>
+    <!-- A Select menu for choosing Major or minor key -->
+    <div class="acc-qual-select">
+      <label for="qualitySelect" class="text-shadow">Quality</label>
+      <select id="qualitySelect" class="box-shadow" name="type-select">
+        <option value="Major">Major</option>
+        <option value="minor">minor</option>
+      </select>
+    </div>
 
-    </form>
-  </div>
+  </form>
 
-    <button id="chordInputButton" class="round-border box-shadow input-button" type="button">Suggest Chords</button>
+  <button id="suggestButton1" class="box-shadow input-button" type="button">Suggest Chords</button>
 
   <main id="chordSuggestionList" class="text-shadow">
     
@@ -55,11 +53,11 @@
 
   </footer>
 
-<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<!-- <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
 <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
-<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-<script type="text/babel" src="js/Key.js"></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script> -->
+<script type="text/javascript" src="js/Key.js"></script>
 <script type="text/javascript" src="js/scripts.js"></script>
-<script type="text/babel" src="js/App.js"></script>
+<!-- <script type="text/babel" src="js/App.js"></script> -->
 </body>
 </html>
