@@ -20,12 +20,12 @@
   <form action="index.html" method="post">
 
     <!-- An Input for the letter name of the starting key of the music -->
-    <input id="chordInput" class="box-shadow" type="text" placeholder="Letter Name" />
+    <input id="chordInput" type="text" placeholder="Letter Name" />
 
     <!-- A Select menu for choosing the accidental -->
-    <div class="acc-qual-select">
+    <div class="quality-select">
       <label for="accidentalSelect">Accidental</label>
-      <select id="accidentalSelect" class="box-shadow" name="accidental-select">
+      <select id="accidentalSelect" name="accidental-select">
         <option value="natural">&#9838;</option> <!--natural-->
         <option value="sharp">&#9839;</option> <!--sharp-->
         <option value="flat">&#9837;</option> <!--flat-->
@@ -33,9 +33,9 @@
     </div>
 
     <!-- A Select menu for choosing Major or minor key -->
-    <div class="acc-qual-select">
-      <label for="qualitySelect" class="text-shadow">Quality</label>
-      <select id="qualitySelect" class="box-shadow" name="type-select">
+    <div class="quality-select">
+      <label for="qualitySelect">Quality</label>
+      <select id="qualitySelect" name="type-select">
         <option value="Major">Major</option>
         <option value="minor">minor</option>
       </select>
@@ -43,9 +43,9 @@
 
   </form>
 
-  <button id="suggestButton1" class="box-shadow input-button" type="button">Suggest Chords</button>
+  <button id="suggestButton1" type="button">Suggest Chords</button>
 
-  <main id="chordSuggestionList" class="text-shadow">
+  <main id="chordSuggestionList">
     
   </main>
 
@@ -53,11 +53,7 @@
 
   </footer>
 
-<!-- <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
-<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
-<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script> -->
 <script type="text/javascript" src="js/Key.js"></script>
 <script type="text/javascript" src="js/scripts.js"></script>
-<!-- <script type="text/babel" src="js/App.js"></script> -->
 </body>
 </html>

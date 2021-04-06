@@ -8,7 +8,7 @@ function renderSuggestions1() {
     return (
       <section>
       <hr></hr>
-        <h3>Key: { currentKey.tonic }<button className="round-border box-shadow">Different Starting Chord</button></h3>
+        <h3>Key: { currentKey.tonic }<button>Different Starting Chord</button></h3>
   
         <SuggestionList1>
   

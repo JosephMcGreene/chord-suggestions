@@ -10,15 +10,26 @@
   text-shadow:  2px 3px 4px rgb(23, 6, 27);
 }
 
+// INSET BOX SHADOW
 @mixin box-shadow {
   box-shadow: inset 0px 0px 4px 4px rgb(45, 12, 54);
 }
 
+// FONT, LETTER-SPACING
 @mixin font($font, $letter-spacing) {
   font-family: $font, sans-serif;
   letter-spacing: $letter-spacing;
 }
 
+// HANDLE TEXT OVERFLOW
 @mixin overflow-wrap($wrap) {
   overflow-wrap: $wrap;
+}
+
+// FLEXBOX
+@mixin flex($direction, $align, $justify) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
 }

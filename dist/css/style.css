@@ -58,12 +58,12 @@ h3 {
   font-size: 1.5rem;
 }
 
-.acc-qual-select {
-  margin: 15px 0px 15px 0px;
+.quality-select {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  margin: 15px 0px 15px 0px;
 }
 
 input,
@@ -100,6 +100,11 @@ hr {
 
 main {
   text-align: center;
+  text-shadow: 2px 3px 4px #17061b;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 /*# sourceMappingURL=style.css.map */

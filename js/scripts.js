@@ -127,6 +127,7 @@ function establishKey(keysArray1, keysArray2) {
 */
 suggestButton1.addEventListener('click', () => {
   scaleNotes = ['C', 'D', 'E', 'F', 'G', 'A', 'B'];
+
   // for major keys:
   if ( isMajorOrMinor('major') ) {
     establishKey(sharpKeysMajor, flatKeysMajor);
@@ -134,8 +135,6 @@ suggestButton1.addEventListener('click', () => {
     let hr = document.createElement('hr');
     let chordSuggestion1 = document.createElement('button');
     let chordSuggestion2 = document.createElement('button');
-    chordSuggestion1.className = "round-border box-shadow suggestions-button";
-    chordSuggestion2.className = "round-border box-shadow suggestions-button";
     chordSuggestion1.innerHTML = `${currentKey.subdominant}`;
     chordSuggestion2.innerHTML = `${currentKey.dominant}`;
     hr = hr + document.querySelector('body').insertBefore(hr, main);
